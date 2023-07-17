@@ -1,9 +1,11 @@
 import axios from "axios";
 
+const ncNews = axios.create({
+  baseURL: "https://milos-nc-news.onrender.com/api",
+});
+
 export function getArticles() {
-  return axios
-    .get("https://milos-nc-news.onrender.com/api/articles")
-    .then(({ data }) => {
-      return data.articles;
-    });
+  return ncNews.get("/articles").then(({ data }) => {
+    return data.articles;
+  });
 }
