@@ -4,17 +4,20 @@ import { useEffect } from "react";
 import axios from "axios";
 import ArticleCard from "./ArticleCard";
 import { Link } from "react-router-dom";
+import { getArticles } from "../api-utils";
 
 function ArticleList() {
   const [articles, setArticles] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
   useEffect(() => {
-    axios
-      .get("https://milos-nc-news.onrender.com/api/articles")
-      .then(({ data }) => {
-        setArticles(data.articles);
-      });
+    getArticles().then((data) => {
+      setArticles(data);
+      setIsLoading(false);
+    });
   }, []);
-
+  if (isLoading) {
+    return <p>Loading..</p>;
+  }
   return (
     <div className="articles-box">
       {articles.map((article) => {
