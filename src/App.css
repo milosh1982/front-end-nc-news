@@ -1,6 +1,49 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&family=Poppins:wght@400;500;600;700&family=Roboto:wght@400;500;700&display=swap");
 #root {
   max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
+  font-family: Montserrat;
+}
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 10px;
+  margin-bottom: 40px;
+}
+header h1 {
+  font-size: 44px;
+}
+nav {
+  display: flex;
+  gap: 20px;
+}
+.nav-link {
+  text-decoration: none;
+}
+.articles_img {
+  width: 300px;
+  height: 200px;
+}
+.articles-box {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 50px;
+  align-items: flex-end;
+}
+.article-title {
+  font-size: 14px;
+}
+.comments-votes-box {
+  font-size: 10px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.articles-link {
+  text-decoration: none;
+  color: black;
 }
