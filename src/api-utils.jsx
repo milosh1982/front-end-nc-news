@@ -9,3 +9,8 @@ export function getArticles() {
     return data.articles;
   });
 }
+export function getArticlesById(id) {
+  return ncNews.get(`/articles/${id}`).then(({ data }) => {
+    return data.article;
+  });
+}

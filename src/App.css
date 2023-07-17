@@ -28,6 +28,10 @@ nav {
   width: 300px;
   height: 200px;
 }
+.article_img {
+  max-width: 100%;
+  height: auto;
+}
 .articles-box {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
