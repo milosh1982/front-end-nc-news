@@ -19,3 +19,15 @@ export function getCommentsById(id) {
     return data.comments;
   });
 }
+export function patchVotesPlus(id) {
+  const patchRequestBody = { inc_votes: 1 };
+  return ncNews.patch(`/articles/${id}`, patchRequestBody).then(({ data }) => {
+    return data;
+  });
+}
+export function patchVotesMinus(id) {
+  const patchRequestBody = { inc_votes: -1 };
+  return ncNews.patch(`/articles/${id}`, patchRequestBody).then(({ data }) => {
+    return data;
+  });
+}
