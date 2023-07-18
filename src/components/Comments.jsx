@@ -4,11 +4,19 @@ import { getCommentsById } from "../api-utils";
 
 function Comments({ article_id }) {
   const [comments, setComments] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
   useEffect(() => {
     getCommentsById(article_id).then((data) => {
       setComments(data);
+      setIsLoading(false);
     });
   }, []);
+  if (comments.length === 0) {
+    return <p>No comments to show. Why not be the first one to add one?</p>;
+  }
+  if (isLoading) {
+    return <p>Loading...</p>;
+  }
   return (
     <div className="comments-box">
       {comments.map((comment) => {
