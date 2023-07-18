@@ -24,7 +24,11 @@ function Article() {
       <Header />
       <h2>{article.title}</h2>
       <p>By: {article.author}</p>
-      <img className="article_img" src={article.article_img_url}></img>
+      <img
+        className="article_img"
+        src={article.article_img_url}
+        alt={article.title}
+      ></img>
       <p>{article.body}</p>
       <VoteButtons article_id={article_id} votes={article.votes} />
       <p>Comments:</p>
