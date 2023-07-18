@@ -1,6 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { getCommentsById } from "../api-utils";
+import CommentAdder from "./CommentAdder";
 
 function Comments({ article_id }) {
   const [comments, setComments] = useState([]);
@@ -32,6 +33,7 @@ function Comments({ article_id }) {
           </div>
         );
       })}
+      <CommentAdder article_id={article_id} setComments={setComments} />
     </div>
   );
 }

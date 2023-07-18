@@ -31,3 +31,16 @@ export function patchVotesMinus(id) {
     return data;
   });
 }
+export function addComment(user, body, id) {
+  const postRequestBody = { username: user, body: body };
+  return ncNews
+    .post(`/articles/${id}/comments`, postRequestBody)
+    .then(({ data }) => {
+      return data.comment;
+    });
+}
+export function getUsers() {
+  return ncNews.get(`/users`).then(({ data }) => {
+    return data.users;
+  });
+}
