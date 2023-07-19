@@ -1,20 +1,21 @@
 import React from "react";
 import { useState } from "react";
 import { useEffect } from "react";
-import axios from "axios";
 import ArticleCard from "./ArticleCard";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { getArticles } from "../api-utils";
 
 function ArticleList() {
+  const { topic } = useParams();
   const [articles, setArticles] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   useEffect(() => {
-    getArticles().then((data) => {
+    setIsLoading(true);
+    getArticles(topic).then((data) => {
       setArticles(data);
       setIsLoading(false);
     });
-  }, []);
+  }, [topic]);
   if (isLoading) {
     return <p>Loading..</p>;
   }
