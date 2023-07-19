@@ -31,8 +31,8 @@ export function patchVotesMinus(id) {
     return data;
   });
 }
-export function addComment(user, body, id) {
-  const postRequestBody = { username: user, body: body };
+export function addComment(body, id) {
+  const postRequestBody = { username: "grumpy19", body: body };
   return ncNews
     .post(`/articles/${id}/comments`, postRequestBody)
     .then(({ data }) => {

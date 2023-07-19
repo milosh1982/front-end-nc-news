@@ -71,10 +71,18 @@ function VoteButtons({ article_id, votes }) {
     <>
       <p>Votes: {votes + vote}</p>
       <div className="vote-buttons-box">
-        <button onClick={onClickHandlerPlus} className="btn">
+        <button
+          onClick={onClickHandlerPlus}
+          className="btn"
+          aria-label="Like this article"
+        >
           Like👍
         </button>
-        <button onClick={onClickHandlerMinus} className="btn">
+        <button
+          onClick={onClickHandlerMinus}
+          className="btn"
+          aria-label="Dislike this article"
+        >
           Dislike👎
         </button>
       </div>

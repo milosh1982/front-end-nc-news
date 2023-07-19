@@ -20,6 +20,8 @@ function Comments({ article_id }) {
   }
   return (
     <div className="comments-box">
+      <CommentAdder article_id={article_id} setComments={setComments} />
+      <p>Comments:</p>
       {comments.map((comment) => {
         const dateFormat = new Date(comment.created_at).toLocaleString();
         return (
@@ -33,7 +35,6 @@ function Comments({ article_id }) {
           </div>
         );
       })}
-      <CommentAdder article_id={article_id} setComments={setComments} />
     </div>
   );
 }

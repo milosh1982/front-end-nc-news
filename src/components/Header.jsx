@@ -4,7 +4,7 @@ import logo from "../assets/logo.png";
 function Header() {
   return (
     <header>
-      <img src={logo}></img>
+      <img src={logo} alt="Nc news logo"></img>
       <h1>NC News</h1>
       <nav>
         <Link className="nav-link" to={"/"}>
