@@ -31,7 +31,7 @@ function Article() {
       ></img>
       <p>{article.body}</p>
       <VoteButtons article_id={article_id} votes={article.votes} />
-      <p>Comments:</p>
+
       <Comments article_id={article_id} />
     </div>
   );

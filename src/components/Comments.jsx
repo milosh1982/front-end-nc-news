@@ -1,6 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { getCommentsById } from "../api-utils";
+import CommentAdder from "./CommentAdder";
 
 function Comments({ article_id }) {
   const [comments, setComments] = useState([]);
@@ -19,6 +20,8 @@ function Comments({ article_id }) {
   }
   return (
     <div className="comments-box">
+      <CommentAdder article_id={article_id} setComments={setComments} />
+      <p>Comments:</p>
       {comments.map((comment) => {
         const dateFormat = new Date(comment.created_at).toLocaleString();
         return (

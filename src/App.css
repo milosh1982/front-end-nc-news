@@ -74,3 +74,23 @@ nav {
   align-items: center;
   justify-content: center;
 }
+.form {
+  display: flex;
+  flex-direction: column;
+  max-width: 500px;
+  margin: 0 auto;
+  gap: 10px;
+}
+.form textarea {
+  height: 200px;
+  padding: 10px;
+}
+.form input {
+  padding: 10px;
+}
+.form button {
+  padding: 10px;
+}
+.form-adder {
+  margin-top: 20px;
+}
