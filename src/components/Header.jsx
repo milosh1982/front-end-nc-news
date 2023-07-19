@@ -10,7 +10,15 @@ function Header() {
         <Link className="nav-link" to={"/"}>
           Home
         </Link>
-        <Link className="nav-link">Topics</Link>
+        <Link to={"/topics/coding"} className="nav-link">
+          Coding
+        </Link>
+        <Link to={"/topics/football"} className="nav-link">
+          Football
+        </Link>
+        <Link to={"/topics/cooking"} className="nav-link">
+          Cooking
+        </Link>
       </nav>
     </header>
   );
