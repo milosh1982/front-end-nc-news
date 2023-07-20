@@ -10,6 +10,7 @@ function SortBar({
 }) {
   function handleChange(event) {
     if (event.target.value === "comment_count") {
+      setSearchParams("comment_count");
       const sortedArticle = articles.sort((a, b) => {
         return a.comment_count - b.comment_count;
       });

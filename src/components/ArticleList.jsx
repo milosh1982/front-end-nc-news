@@ -13,14 +13,19 @@ function ArticleList() {
   const [articles, setArticles] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
-  useEffect(() => {
-    setIsLoading(true);
-    getArticles(topic, searchParams, sortButtons).then((data) => {
-      setArticles(data);
+  if (searchParams === "votes" || searchParams === "created_at") {
+    useEffect(() => {
+      setIsLoading(true);
+      getArticles(topic, searchParams, sortButtons).then((data) => {
+        setArticles(data);
+        setIsLoading(false);
+      });
+    }, [topic, searchParams, sortButtons]);
+  } else if (searchParams === "comment_count") {
+    useEffect(() => {
       setIsLoading(false);
-    });
-  }, [topic, searchParams, sortButtons]);
-
+    }, [topic, searchParams, sortButtons]);
+  }
   if (isLoading) {
     return <p>Loading..</p>;
   }
