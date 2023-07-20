@@ -4,9 +4,11 @@ const ncNews = axios.create({
   baseURL: "https://milos-nc-news.onrender.com/api",
 });
 
-export function getArticles(topic) {
+export function getArticles(topic, searchParams, sortButtons) {
   return ncNews
-    .get("/articles", { params: { topic: topic } })
+    .get("/articles", {
+      params: { topic: topic, sort_by: searchParams, order: sortButtons },
+    })
     .then(({ data }) => {
       return data.articles;
     });
