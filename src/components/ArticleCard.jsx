@@ -8,6 +8,7 @@ function ArticleCard(props) {
       <div className="comments-votes-box">
         <p>comment count: {props.comment_count}</p>
         <p>votes count: {props.votes}</p>
+        <p>date: {new Date(props.created_at).toLocaleDateString()}</p>
       </div>
     </section>
   );

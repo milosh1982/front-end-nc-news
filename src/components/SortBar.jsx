@@ -9,18 +9,9 @@ function SortBar({
   sortButtons,
 }) {
   function handleChange(event) {
-    if (event.target.value === "comment_count") {
-      setSearchParams("comment_count");
-      const sortedArticle = articles.sort((a, b) => {
-        return a.comment_count - b.comment_count;
-      });
-      return setArticles(() => {
-        return [...sortedArticle];
-      });
-    } else {
-      setSearchParams(event.target.value);
-    }
+    setSearchParams(event.target.value);
   }
+
   const onOptionChange = (event) => {
     setSortButtons(event.target.value);
   };

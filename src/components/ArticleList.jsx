@@ -6,7 +6,7 @@ import { Link, useParams } from "react-router-dom";
 import { getArticles } from "../api-utils";
 import SortBar from "./SortBar";
 
-function ArticleList() {
+function ArticleList({ reset, setReset }) {
   const { topic } = useParams();
   const [searchParams, setSearchParams] = useState("votes");
   const [sortButtons, setSortButtons] = useState("asc");
@@ -15,6 +15,7 @@ function ArticleList() {
 
   if (searchParams === "votes" || searchParams === "created_at") {
     useEffect(() => {
+      setReset(false);
       setIsLoading(true);
       getArticles(topic, searchParams, sortButtons).then((data) => {
         setArticles(data);
@@ -22,10 +23,31 @@ function ArticleList() {
       });
     }, [topic, searchParams, sortButtons]);
   } else if (searchParams === "comment_count") {
+    if (reset) {
+      setReset(false);
+      setSearchParams("votes");
+      return;
+    }
     useEffect(() => {
       setIsLoading(false);
+      if (sortButtons === "asc") {
+        const sortedArticle = articles.sort((a, b) => {
+          return a.comment_count - b.comment_count;
+        });
+        return setArticles(() => {
+          return [...sortedArticle];
+        });
+      } else if (sortButtons == "desc") {
+        const sortedArticle = articles.sort((a, b) => {
+          return b.comment_count - a.comment_count;
+        });
+        return setArticles(() => {
+          return [...sortedArticle];
+        });
+      }
     }, [topic, searchParams, sortButtons]);
   }
+
   if (isLoading) {
     return <p>Loading..</p>;
   }
@@ -55,6 +77,7 @@ function ArticleList() {
                 img={article.article_img_url}
                 comment_count={article.comment_count}
                 votes={article.votes}
+                created_at={article.created_at}
               />
             </Link>
           );
