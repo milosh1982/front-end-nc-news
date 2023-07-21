@@ -31,6 +31,7 @@ function Comments({ article_id }) {
       .catch((err) => {
         if (err) {
           setError(true);
+          alert("Something went wrong please try again");
           setDeleted(false);
         }
       });
