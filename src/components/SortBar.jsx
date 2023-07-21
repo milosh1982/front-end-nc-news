@@ -23,7 +23,7 @@ function SortBar({
         <option value={"comment_count"}>sort by comment count</option>
         <option value={"votes"}>sort by votes</option>
       </select>
-      <div>
+      <div className="radio-buttons">
         <input
           type="radio"
           value="asc"

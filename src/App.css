@@ -15,7 +15,7 @@ header {
   margin-bottom: 40px;
 }
 header h1 {
-  font-size: 44px;
+  font-size: 46px;
 }
 nav {
   display: flex;
@@ -39,7 +39,7 @@ nav {
   align-items: flex-end;
 }
 .article-title {
-  font-size: 14px;
+  font-size: 16px;
 }
 .comments-votes-box {
   font-size: 10px;
@@ -99,6 +99,7 @@ nav {
   align-items: center;
   justify-content: right;
   gap: 20px;
+  height: 60px;
 }
 .error-links {
   display: flex;
@@ -106,6 +107,14 @@ nav {
   align-items: center;
   justify-content: center;
   margin-top: 50px;
+}
+.radio-buttons {
+  font-size: 12px;
+  margin-top: 10px;
+  margin-bottom: 30px;
+}
+.user-header {
+  font-size: 14px;
 }
 @media screen and (max-width: 800px) {
   header {

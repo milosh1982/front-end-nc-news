@@ -61,7 +61,7 @@ function Header({ setReset }) {
             Sign in
           </button>
         )}
-        {user.user && <p>Welcome {user.user}</p>}
+        {user.user && <p className="user-header">Welcome {user.user}</p>}
         {user.user && (
           <button onClick={clickLogoutHandler} className="btn">
             Log out
