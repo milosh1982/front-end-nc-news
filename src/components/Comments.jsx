@@ -9,6 +9,7 @@ function Comments({ article_id }) {
   const [comments, setComments] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [deleted, setDeleted] = useState(false);
+  const [error, setError] = useState(false);
   useEffect(() => {
     getCommentsById(article_id).then((data) => {
       setComments(data);
@@ -17,13 +18,22 @@ function Comments({ article_id }) {
   }, []);
   const handleDelete = (index, id) => {
     setDeleted(true);
-    setComments((values) => {
-      return values.filter((_, i) => i !== index);
-    });
-    deleteComment(id).then(() => {
-      alert("Your comment has been deleted");
-      setDeleted(false);
-    });
+
+    deleteComment(id)
+      .then(() => {
+        setComments((values) => {
+          return values.filter((_, i) => i !== index);
+        });
+        alert("Your comment has been deleted");
+        setDeleted(false);
+        setError(false);
+      })
+      .catch((err) => {
+        if (err) {
+          setError(true);
+          setDeleted(false);
+        }
+      });
   };
   if (comments.length === 0) {
     return <p>No comments to show. Why not be the first one to add one?</p>;
@@ -35,6 +45,7 @@ function Comments({ article_id }) {
     <div className="comments-box">
       <CommentAdder article_id={article_id} setComments={setComments} />
       <p>Comments:</p>
+      {error && <p>Something went wrong, please try again </p>}
       {comments.map((comment, index) => {
         const dateFormat = new Date(comment.created_at).toLocaleString();
         return (
