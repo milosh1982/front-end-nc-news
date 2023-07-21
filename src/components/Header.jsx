@@ -12,7 +12,7 @@ function Header({ setReset }) {
     user.setUser("");
   };
   return (
-    <>
+    <div className="header-container">
       <header>
         <img src={logo} alt="Nc news logo"></img>
         <h1>NC News</h1>
@@ -68,7 +68,7 @@ function Header({ setReset }) {
           </button>
         )}
       </div>
-    </>
+    </div>
   );
 }
 

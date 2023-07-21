@@ -107,3 +107,26 @@ nav {
   justify-content: center;
   margin-top: 50px;
 }
+@media screen and (max-width: 800px) {
+  header {
+    display: flex;
+    flex-direction: column;
+  }
+}
+@media screen and (max-width: 600px) {
+  .header-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .login-box {
+    margin-bottom: 20px;
+  }
+}
+@media screen and (max-width: 400px) {
+  nav {
+    display: flex;
+    flex-direction: column;
+  }
+}
