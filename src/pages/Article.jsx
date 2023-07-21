@@ -1,19 +1,26 @@
 import React, { useEffect, useState } from "react";
 import Header from "../components/Header";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { getArticlesById } from "../api-utils";
 import Comments from "../components/Comments";
 import VoteButtons from "../components/VoteButtons";
 
 function Article() {
+  const navigate = useNavigate();
   const { article_id } = useParams();
   const [article, setArticle] = useState({});
   const [isLoading, setIsLoading] = useState(true);
   useEffect(() => {
-    getArticlesById(article_id).then((data) => {
-      setArticle(data);
-      setIsLoading(false);
-    });
+    getArticlesById(article_id)
+      .then((data) => {
+        setArticle(data);
+        setIsLoading(false);
+      })
+      .catch((err) => {
+        if (err) {
+          navigate("*");
+        }
+      });
   }, []);
 
   if (isLoading) {

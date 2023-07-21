@@ -2,11 +2,12 @@ import React from "react";
 import { useState } from "react";
 import { useEffect } from "react";
 import ArticleCard from "./ArticleCard";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { getArticles } from "../api-utils";
 import SortBar from "./SortBar";
 
 function ArticleList({ reset, setReset }) {
+  const navigate = useNavigate();
   const { topic } = useParams();
   const [searchParams, setSearchParams] = useState("votes");
   const [sortButtons, setSortButtons] = useState("asc");
@@ -17,10 +18,16 @@ function ArticleList({ reset, setReset }) {
     useEffect(() => {
       setReset(false);
       setIsLoading(true);
-      getArticles(topic, searchParams, sortButtons).then((data) => {
-        setArticles(data);
-        setIsLoading(false);
-      });
+      getArticles(topic, searchParams, sortButtons)
+        .then((data) => {
+          setArticles(data);
+          setIsLoading(false);
+        })
+        .catch((err) => {
+          if (err) {
+            navigate("*");
+          }
+        });
     }, [topic, searchParams, sortButtons]);
   } else if (searchParams === "comment_count") {
     if (reset) {
