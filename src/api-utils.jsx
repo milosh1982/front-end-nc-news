@@ -48,3 +48,6 @@ export function getUsers() {
     return data.users;
   });
 }
+export function deleteComment(id) {
+  return ncNews.delete(`/comments/${id}`);
+}

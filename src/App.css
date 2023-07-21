@@ -94,3 +94,9 @@ nav {
 .form-adder {
   margin-top: 20px;
 }
+.login-box {
+  display: flex;
+  align-items: center;
+  justify-content: right;
+  gap: 20px;
+}
